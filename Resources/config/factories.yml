@@ -1,1 +1,30 @@
 services:
+
+    LSB\NotificationBundle\Factory\NotifcationFactory: ~
+
+    lsb_notification_factory_notifcation:
+        alias: LSB\NotificationBundle\Factory\NotifcationFactory
+    LSB\NotificationBundle\Factory\NotifcationFactoryInterface: '@LSB\NotificationBundle\Factory\NotifcationFactory'
+
+    LSB\NotificationBundle\Factory\NotificationAttachmentFactory: ~
+
+    lsb_notification_factory_notification_attachment:
+        alias: LSB\NotificationBundle\Factory\NotificationAttachmentFactory
+    LSB\NotificationBundle\Factory\NotificationAttachmentFactoryInterface: '@LSB\NotificationBundle\Factory\NotificationAttachmentFactory'
+
+    LSB\NotificationBundle\Factory\NotificationBlackListFactory: ~
+
+    lsb_notification_factory_notification_black_list:
+        alias: LSB\NotificationBundle\Factory\NotificationBlackListFactory
+    LSB\NotificationBundle\Factory\NotificationBlackListFactoryInterface: '@LSB\NotificationBundle\Factory\NotificationBlackListFactory'
+
+    LSB\NotificationBundle\Factory\NotificationLogEntryFactory: ~
+    lsb_notification_factory_notification_log_entry:
+        alias: LSB\NotificationBundle\Factory\NotificationLogEntryFactory
+    LSB\NotificationBundle\Factory\NotificationLogEntryFactoryInterface: '@LSB\NotificationBundle\Factory\NotificationLogEntryFactory'
+
+    LSB\NotificationBundle\Factory\NotificationRecipientFactory: ~
+
+    lsb_notification_factory_notification_recipient:
+        alias: LSB\NotificationBundle\Factory\NotificationRecipientFactory
+    LSB\NotificationBundle\Factory\NotificationRecipientFactoryInterface: '@LSB\NotificationBundle\Factory\NotificationRecipientFactory'

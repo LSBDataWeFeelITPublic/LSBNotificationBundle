@@ -1,1 +1,21 @@
 services:
+
+    LSB\NotificationBundle\Form\NotifcationType:
+        tags:
+            - {name: form.type}
+
+    LSB\NotificationBundle\Form\NotificationAttachmentType:
+        tags:
+            - {name: form.type}
+
+    LSB\NotificationBundle\Form\NotificationBlackListType:
+        tags:
+            - {name: form.type}
+
+    LSB\NotificationBundle\Form\NotificationLogEntryType:
+        tags:
+            - {name: form.type}
+
+    LSB\NotificationBundle\Form\NotificationRecipientType:
+        tags:
+            - {name: form.type}

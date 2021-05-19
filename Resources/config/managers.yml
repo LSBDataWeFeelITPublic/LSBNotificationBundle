@@ -1,1 +1,21 @@
 services:
+
+    LSB\NotificationBundle\Manager\NotifcationManager:
+        arguments:
+            - '@lsb_utility_object_manager'
+
+    LSB\NotificationBundle\Manager\NotificationAttachmentManager:
+        arguments:
+            - '@lsb_utility_object_manager'
+
+    LSB\NotificationBundle\Manager\NotificationBlackListManager:
+        arguments:
+            - '@lsb_utility_object_manager'
+
+    LSB\NotificationBundle\Manager\NotificationLogEntryManager:
+        arguments:
+            - '@lsb_utility_object_manager'
+
+    LSB\NotificationBundle\Manager\NotificationRecipientManager:
+        arguments:
+            - '@lsb_utility_object_manager'

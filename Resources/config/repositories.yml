@@ -1,1 +1,26 @@
 services:
+
+    LSB\NotificationBundle\Repository\NotifcationRepository:
+        arguments:
+            - '@doctrine'
+    LSB\NotificationBundle\Repository\NotifcationRepositoryInterface: '@LSB\NotificationBundle\Repository\NotifcationRepository'
+
+    LSB\NotificationBundle\Repository\NotificationAttachmentRepository:
+        arguments:
+            - '@doctrine'
+    LSB\NotificationBundle\Repository\NotificationAttachmentRepositoryInterface: '@LSB\NotificationBundle\Repository\NotificationAttachmentRepository'
+
+    LSB\NotificationBundle\Repository\NotificationBlackListRepository:
+        arguments:
+            - '@doctrine'
+    LSB\NotificationBundle\Repository\NotificationBlackListRepositoryInterface: '@LSB\NotificationBundle\Repository\NotificationBlackListRepository'
+
+    LSB\NotificationBundle\Repository\NotificationLogEntryRepository:
+        arguments:
+            - '@doctrine'
+    LSB\NotificationBundle\Repository\NotificationLogEntryRepositoryInterface: '@LSB\NotificationBundle\Repository\NotificationLogEntryRepository'
+
+    LSB\NotificationBundle\Repository\NotificationRecipientRepository:
+        arguments:
+            - '@doctrine'
+    LSB\NotificationBundle\Repository\NotificationRecipientRepositoryInterface: '@LSB\NotificationBundle\Repository\NotificationRecipientRepository'
