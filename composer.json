@@ -1,0 +1,49 @@
+{
+    "name": "lsb/notification-bundle",
+    "type": "symfony-bundle",
+    "description": "LSB notification bundle",
+    "license": "MIT",
+    "keywords": [
+        "symfony"
+    ],
+    "homepage": "https://lsb.pl",
+    "authors": [
+        {
+            "name": "LSB DATA",
+            "email": "krzysztof.mazur@lsb.com.pl"
+        }
+    ],
+    "require": {
+        "php": "^7.4 | ^8.0",
+        "symfony/framework-bundle": "^5.0",
+        "doctrine/orm": "2.*",
+        "doctrine/doctrine-bundle": "2.*",
+        "symfony/validator": "^5.0",
+        "lsb/utility-bundle": "dev-master",
+        "knplabs/doctrine-behaviors": "^2.0",
+        "stof/doctrine-extensions-bundle": "^1.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.0",
+        "symfony/phpunit-bridge": "^5.0",
+        "php-coveralls/php-coveralls": "^2.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "LSB\\NotificationBundle\\": ""
+        },
+        "exclude-from-classmap": [
+            "Tests/"
+        ]
+    },
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/LSBDataWeFeelITPublic/TranslationFormBundle.git"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/LSBDataWeFeelITPublic/LSBUtilityBundle.git"
+        }
+    ]
+}
