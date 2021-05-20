@@ -6,6 +6,7 @@ namespace LSB\NotificationBundle\Entity;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping\MappedSuperclass;
 use LSB\NotificationBundle\Traits\NotificationTrackingStatusTrait;
 use LSB\UtilityBundle\Traits\CreatedUpdatedTrait;
 use LSB\UtilityBundle\Traits\UuidTrait;
@@ -15,7 +16,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Class NotificationAttachment
  * @ORM\HasLifecycleCallbacks()
- * @ORM\MappedSuperclass()
+ * @MappedSuperclass
  */
 class NotificationRecipient implements NotificationRecipientInterface
 {

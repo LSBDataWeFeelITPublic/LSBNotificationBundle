@@ -1,9 +1,5 @@
 services:
 
-    LSB\NotificationBundle\Manager\NotifcationManager:
-        arguments:
-            - '@lsb_utility_object_manager'
-
     LSB\NotificationBundle\Manager\NotificationAttachmentManager:
         arguments:
             - '@lsb_utility_object_manager'
@@ -17,5 +13,9 @@ services:
             - '@lsb_utility_object_manager'
 
     LSB\NotificationBundle\Manager\NotificationRecipientManager:
+        arguments:
+            - '@lsb_utility_object_manager'
+
+    LSB\NotificationBundle\Manager\NotificationManager:
         arguments:
             - '@lsb_utility_object_manager'

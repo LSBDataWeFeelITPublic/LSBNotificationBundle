@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace LSB\NotificationBundle\Manager;
 
-use LSB\NotificationBundle\Entity\NotifcationInterface;
-use LSB\NotificationBundle\Factory\NotifcationFactoryInterface;
-use LSB\NotificationBundle\Repository\NotifcationRepositoryInterface;
+use LSB\NotificationBundle\Entity\NotificationInterface;
+use LSB\NotificationBundle\Factory\NotificationFactoryInterface;
+use LSB\NotificationBundle\Repository\NotificationRepositoryInterface;
 use LSB\UtilityBundle\Factory\FactoryInterface;
 use LSB\UtilityBundle\Form\BaseEntityType;
 use LSB\UtilityBundle\Manager\ObjectManagerInterface;
@@ -13,48 +13,48 @@ use LSB\UtilityBundle\Manager\BaseManager;
 use LSB\UtilityBundle\Repository\RepositoryInterface;
 
 /**
-* Class NotifcationManager
+* Class NotificationManager
 * @package LSB\NotificationBundle\Manager
 */
-class NotifcationManager extends BaseManager
+class NotificationManager extends BaseManager
 {
 
     /**
-     * NotifcationManager constructor.
+     * NotificationManager constructor.
      * @param ObjectManagerInterface $objectManager
-     * @param NotifcationFactoryInterface $factory
-     * @param NotifcationRepositoryInterface $repository
+     * @param NotificationFactoryInterface $factory
+     * @param NotificationRepositoryInterface $repository
      * @param BaseEntityType|null $form
      */
     public function __construct(
         ObjectManagerInterface $objectManager,
-        NotifcationFactoryInterface $factory,
-        NotifcationRepositoryInterface $repository,
+        NotificationFactoryInterface $factory,
+        NotificationRepositoryInterface $repository,
         ?BaseEntityType $form
     ) {
         parent::__construct($objectManager, $factory, $repository, $form);
     }
 
     /**
-     * @return NotifcationInterface|object
+     * @return NotificationInterface|object
      */
-    public function createNew(): NotifcationInterface
+    public function createNew(): NotificationInterface
     {
         return parent::createNew();
     }
 
     /**
-     * @return NotifcationFactoryInterface|FactoryInterface
+     * @return NotificationFactoryInterface|FactoryInterface
      */
-    public function getFactory(): NotifcationFactoryInterface
+    public function getFactory(): NotificationFactoryInterface
     {
         return parent::getFactory();
     }
 
     /**
-     * @return NotifcationRepositoryInterface|RepositoryInterface
+     * @return NotificationRepositoryInterface|RepositoryInterface
      */
-    public function getRepository(): NotifcationRepositoryInterface
+    public function getRepository(): NotificationRepositoryInterface
     {
         return parent::getRepository();
     }

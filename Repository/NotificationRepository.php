@@ -4,27 +4,27 @@ declare(strict_types=1);
 namespace LSB\NotificationBundle\Repository;
 
 use Doctrine\Persistence\ManagerRegistry;
-use LSB\NotificationBundle\Entity\Notifcation;
+use LSB\NotificationBundle\Entity\Notification;
 use LSB\UtilityBundle\Repository\BaseRepository;
 use LSB\UtilityBundle\Repository\PaginationInterface;
 use LSB\UtilityBundle\Repository\PaginationRepositoryTrait;
 
 /**
- * Class NotifcationRepository
+ * Class NotificationRepository
  * @package LSB\NotificationBundle\Repository
  */
-class NotifcationRepository extends BaseRepository implements NotifcationRepositoryInterface, PaginationInterface
+class NotificationRepository extends BaseRepository implements NotificationRepositoryInterface, PaginationInterface
 {
     use PaginationRepositoryTrait;
 
     /**
-     * NotifcationRepository constructor.
+     * NotificationRepository constructor.
      * @param ManagerRegistry $registry
      * @param string|null $stringClass
      */
     public function __construct(ManagerRegistry $registry, ?string $stringClass = null)
     {
-        parent::__construct($registry, $stringClass ?? Notifcation::class);
+        parent::__construct($registry, $stringClass ?? Notification::class);
     }
 
 }

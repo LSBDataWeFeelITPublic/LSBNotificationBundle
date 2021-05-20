@@ -6,7 +6,7 @@ namespace LSB\NotificationBundle\Entity;
 use Doctrine\ORM\Mapping\MappedSuperclass;
 use LSB\UtilityBundle\Traits\CreatedUpdatedTrait;
 use LSB\UtilityBundle\Traits\UuidTrait;
-use LSB\UtiltiyBundle\Entity\FileDataTrait;
+use LSB\UtilityBundle\Traits\FileDataTrait;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Doctrine\ORM\Mapping as ORM;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
@@ -19,7 +19,7 @@ use Symfony\Component\HttpFoundation\File\File as SfFile;
  * @ORM\HasLifecycleCallbacks()
  * @MappedSuperclass
  */
-class NotificationAttachment
+class NotificationAttachment implements NotificationAttachmentInterface
 {
     use UuIdTrait;
     use CreatedUpdatedTrait;

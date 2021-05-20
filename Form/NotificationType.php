@@ -6,10 +6,10 @@ namespace LSB\NotificationBundle\Form;
 use LSB\UtilityBundle\Form\BaseEntityType;
 
 /**
- * Class NotifcationType
+ * Class NotificationType
  * @package LSB\NotificationBundle\Form
  */
-class NotifcationType extends BaseEntityType
+class NotificationType extends BaseEntityType
 {
 
 }

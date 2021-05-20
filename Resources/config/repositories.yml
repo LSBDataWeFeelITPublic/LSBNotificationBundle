@@ -1,10 +1,5 @@
 services:
 
-    LSB\NotificationBundle\Repository\NotifcationRepository:
-        arguments:
-            - '@doctrine'
-    LSB\NotificationBundle\Repository\NotifcationRepositoryInterface: '@LSB\NotificationBundle\Repository\NotifcationRepository'
-
     LSB\NotificationBundle\Repository\NotificationAttachmentRepository:
         arguments:
             - '@doctrine'
@@ -24,3 +19,8 @@ services:
         arguments:
             - '@doctrine'
     LSB\NotificationBundle\Repository\NotificationRecipientRepositoryInterface: '@LSB\NotificationBundle\Repository\NotificationRecipientRepository'
+
+    LSB\NotificationBundle\Repository\NotificationRepository:
+        arguments:
+            - '@doctrine'
+    LSB\NotificationBundle\Repository\NotificationRepositoryInterface: '@LSB\NotificationBundle\Repository\NotificationRepository'

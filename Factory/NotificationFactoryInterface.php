@@ -6,10 +6,10 @@ namespace LSB\NotificationBundle\Factory;
 use LSB\UtilityBundle\Factory\FactoryInterface;
 
 /**
- * Interface NotifcationFactoryInterface
+ * Interface NotificationFactoryInterface
  * @package LSB\NotificationBundle\Factory
  */
-interface NotifcationFactoryInterface extends FactoryInterface
+interface NotificationFactoryInterface extends FactoryInterface
 {
 
 }

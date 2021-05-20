@@ -6,10 +6,10 @@ namespace LSB\NotificationBundle\Repository;
 use LSB\UtilityBundle\Repository\RepositoryInterface;
 
 /**
- * Interface NotifcationRepositoryInterface
+ * Interface NotificationRepositoryInterface
  * @package LSB\NotificationBundle\Repository
  */
-interface NotifcationRepositoryInterface extends RepositoryInterface
+interface NotificationRepositoryInterface extends RepositoryInterface
 {
 
 }

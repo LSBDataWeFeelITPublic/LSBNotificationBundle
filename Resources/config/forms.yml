@@ -1,6 +1,6 @@
 services:
 
-    LSB\NotificationBundle\Form\NotifcationType:
+    LSB\NotificationBundle\Form\NotificationType:
         tags:
             - {name: form.type}
 

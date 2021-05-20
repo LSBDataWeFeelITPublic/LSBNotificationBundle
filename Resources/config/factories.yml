@@ -1,11 +1,5 @@
 services:
 
-    LSB\NotificationBundle\Factory\NotifcationFactory: ~
-
-    lsb_notification_factory_notifcation:
-        alias: LSB\NotificationBundle\Factory\NotifcationFactory
-    LSB\NotificationBundle\Factory\NotifcationFactoryInterface: '@LSB\NotificationBundle\Factory\NotifcationFactory'
-
     LSB\NotificationBundle\Factory\NotificationAttachmentFactory: ~
 
     lsb_notification_factory_notification_attachment:
@@ -28,3 +22,10 @@ services:
     lsb_notification_factory_notification_recipient:
         alias: LSB\NotificationBundle\Factory\NotificationRecipientFactory
     LSB\NotificationBundle\Factory\NotificationRecipientFactoryInterface: '@LSB\NotificationBundle\Factory\NotificationRecipientFactory'
+
+    LSB\NotificationBundle\Factory\NotificationFactory:
+        arguments:
+            - '%lsb_notification.config.resources.notification.class.entity%'
+    lsb_notification_factory_notification:
+        alias: LSB\NotificationBundle\Factory\NotificationFactory
+    LSB\NotificationBundle\Factory\NotificationFactoryInterface: '@LSB\NotificationBundle\Factory\NotificationFactory'
