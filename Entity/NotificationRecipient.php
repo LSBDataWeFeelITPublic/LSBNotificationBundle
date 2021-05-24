@@ -37,8 +37,6 @@ class NotificationRecipient implements NotificationRecipientInterface
     ];
 
     /**
-     * Powiadomienie
-     *
      * @ORM\ManyToOne(targetEntity="LSB\NotificationBundle\Entity\NotificationInterface", inversedBy="notificationExtendedRecipients")
      */
     protected NotificationInterface $notification;
@@ -87,7 +85,7 @@ class NotificationRecipient implements NotificationRecipientInterface
      * @var array
      * @ORM\Column(type="json")
      */
-    protected array $errorLog;
+    protected array $errorLog = [];
 
     /**
      * @var int

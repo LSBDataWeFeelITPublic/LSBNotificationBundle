@@ -1,9 +1,10 @@
 <?php
+declare(strict_types=1);
 
 namespace LSB\NotificationBundle\Event;
 
-use LSB\NotificationBundle\Entity\Notification;
-use Symfony\Component\EventDispatcher\Event;
+use LSB\NotificationBundle\Entity\NotificationInterface;
+use Symfony\Contracts\EventDispatcher\Event;
 
 /**
  * Class NotificationEvent
@@ -11,14 +12,21 @@ use Symfony\Component\EventDispatcher\Event;
  */
 class NotificationEvent extends Event
 {
-    protected $notification;
+    protected NotificationInterface $notification;
 
-    public function __construct(Notification $notification)
+    /**
+     * NotificationEvent constructor.
+     * @param NotificationInterface $notification
+     */
+    public function __construct(NotificationInterface $notification)
     {
         $this->notification = $notification;
     }
 
-    public function getNotification()
+    /**
+     * @return NotificationInterface
+     */
+    public function getNotification(): NotificationInterface
     {
         return $this->notification;
     }

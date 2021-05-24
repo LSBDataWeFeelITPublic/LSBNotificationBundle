@@ -25,11 +25,6 @@ class NotificationAttachment implements NotificationAttachmentInterface
     use CreatedUpdatedTrait;
     use FileDataTrait;
 
-    //Aktualnie wykorzystywany system plików
-    const FILE_SYSTEM_NAME = 'notification_attachments_fs';
-    const FILE_MAPPING_NAME = 'notification_attachment';
-    const FILE_COLUMN = 'file';
-
     /**
      * @ORM\ManyToOne(targetEntity="LSB\NotificationBundle\Entity\NotificationInterface", inversedBy="notificationAttachments")
      */
@@ -165,5 +160,39 @@ class NotificationAttachment implements NotificationAttachmentInterface
         return $this;
     }
 
+    /**
+     * @return NotificationInterface
+     */
+    public function getNotification(): NotificationInterface
+    {
+        return $this->notification;
+    }
 
+    /**
+     * @param NotificationInterface $notification
+     * @return $this
+     */
+    public function setNotification(NotificationInterface $notification): self
+    {
+        $this->notification = $notification;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDisplayFileName(): ?string
+    {
+        return $this->displayFileName;
+    }
+
+    /**
+     * @param string|null $displayFileName
+     * @return $this
+     */
+    public function setDisplayFileName(?string $displayFileName): self
+    {
+        $this->displayFileName = $displayFileName;
+        return $this;
+    }
 }

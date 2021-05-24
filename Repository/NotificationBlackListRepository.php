@@ -13,7 +13,7 @@ use LSB\UtilityBundle\Repository\PaginationRepositoryTrait;
  * Class NotificationBlackListRepository
  * @package LSB\NotificationBundle\Repository
  */
-class NotificationBlackListRepository extends BaseRepository implements NotificationBlackListRepositoryInterface, PaginationInterface
+class NotificationBlackListRepository extends BaseRepository implements NotificationBlackListRepositoryInterface
 {
     use PaginationRepositoryTrait;
 
@@ -27,4 +27,21 @@ class NotificationBlackListRepository extends BaseRepository implements Notifica
         parent::__construct($registry, $stringClass ?? NotificationBlackList::class);
     }
 
+    /**
+     * @param string $email
+     * @return NotificationBlackList|null
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function getByEmail(string $email): ?NotificationBlackList
+    {
+        $qb = $this->createQueryBuilder('nbl');
+        $qb->where('lower(nbl.email) LIKE lower(:email)')
+            ->andWhere('nbl.isActive = TRUE')
+            ->setParameter('email', $email)
+            ->orderBy('nbl.id', 'ASC')
+            ->setMaxResults(1)
+        ;
+
+        return $qb->getQuery()->getOneOrNullResult();
+    }
 }

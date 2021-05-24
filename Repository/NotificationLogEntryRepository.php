@@ -13,7 +13,7 @@ use LSB\UtilityBundle\Repository\PaginationRepositoryTrait;
  * Class NotificationLogEntryRepository
  * @package LSB\NotificationBundle\Repository
  */
-class NotificationLogEntryRepository extends BaseRepository implements NotificationLogEntryRepositoryInterface, PaginationInterface
+class NotificationLogEntryRepository extends BaseRepository implements NotificationLogEntryRepositoryInterface
 {
     use PaginationRepositoryTrait;
 

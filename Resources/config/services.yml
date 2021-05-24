@@ -1,1 +1,5 @@
 services:
+    LSB\NotificationBundle\Command\ProcessNotificationsCommand:
+        tags: ['console.command']
+        arguments:
+            - '@LSB\NotificationBundle\Manager\NotificationManager'

@@ -1,69 +1,59 @@
 <?php
+declare(strict_types=1);
 
 namespace LSB\NotificationBundle\Channel;
 
 use LSB\NotificationBundle\Entity\Notification;
+use LSB\NotificationBundle\Entity\NotificationInterface;
 use LSB\NotificationBundle\Entity\NotificationRecipient;
+use LSB\NotificationBundle\Entity\NotificationRecipientInterface;
+use LSB\UtilityBundle\Module\ModuleInterface;
 
 /**
- * @author Krzysztof Mazur
- *
  * Interface ChannelInterface
  * @package LSB\NotificationBundle\Channel
  */
-interface ChannelInterface
+interface ChannelInterface extends ModuleInterface
 {
     /**
-     * Pobiera nazwę kanału powiadomień
-     *
      * @return string
      */
     public function getName(): string;
 
     /**
-     * Wysyła pojedyncze "proste" powiadomienie
-     *
-     * @param Notification $notification
-     * @param iterable $recipientsToProcess
+     * @param NotificationInterface $notification
+     * @param array $recipientsToProcess
      * @return array
      */
-    public function sendSimpleNotification(Notification $notification, iterable $recipientsToProcess): array;
+    public function sendSimpleNotification(NotificationInterface $notification, array $recipientsToProcess): array;
 
     /**
-     * Wysyła pojedyncze "rozszerzone" powiadomienie
-     *
-     * @param Notification $notification
-     * @param iterable $recipientsPackage
+     * @param NotificationInterface $notification
+     * @param array $recipientsPackage
      * @return array
      */
-    public function sendExtendedNotification(Notification $notification, iterable $recipientsPackage): array;
+    public function sendExtendedNotification(NotificationInterface $notification, array $recipientsPackage): array;
 
     /**
-     * Waliduje dane odbiorców
-     *
      * @param array $recipients
      * @return array
      */
     public function validateSimpleRecipients(array $recipients): array;
 
     /**
-     * Metoda walidująca "prostego" odbiorcę
-     *
      * @param $recipient
      * @return mixed
      */
     public function validateSimpleRecipient($recipient);
 
     /**
-     * Metoda walidująca "rozszerzonego" odbiorcę
-     *
-     * @param NotificationRecipient $recipient
+     * @param NotificationRecipientInterface $recipient
      * @return mixed
      */
-    public function validateExtendedRecipient(NotificationRecipient $recipient);
+    public function validateExtendedRecipient(NotificationRecipientInterface $recipient);
 
     /**
-     * Konwertuje dane do określonej przez kanały formy danych (w zależności od obiektu)
+     * Converts data to the data form specified by the channels (depending on the object)
      *
      * @param $template
      * @param array $templateData
@@ -79,19 +69,19 @@ interface ChannelInterface
     public function getStatus();
 
     /**
-     * Zwraca maksymalną liczbę odbiorców dla jednego cyklu wysyłki
+     * Returns the maximum number of recipients for one shipping cycle
      *
      * @return int
      */
     public function getMaxRecipients(): int;
 
     /**
-     * Dedykowana metoda parsująca uwzględniające specyfikę kanału - opiera swoje działanie na ogólno dostępnym parserze powiadomień
+     * Dedicated parsing method that takes into account the specificity of the channel - it bases its operation on a public notifications parser
      *
      * @param Notification $notification
      * @param NotificationRecipient $notificationRecipient
      * @return Notification
      */
-    public function parseContent(Notification $notification, NotificationRecipient $notificationRecipient): Notification;
+    public function parseContent(NotificationInterface $notification, NotificationRecipientInterface $notificationRecipient): NotificationInterface;
 
 }

@@ -1,12 +1,11 @@
 <?php
+declare(strict_types=1);
 
 namespace LSB\NotificationBundle\Event;
 
 /**
- * Created by PhpStorm.
- * User: krzychu
- * Date: 09.03.17
- * Time: 11:42
+ * Class NotificationEvents
+ * @package LSB\NotificationBundle\Event
  */
 class NotificationEvents
 {

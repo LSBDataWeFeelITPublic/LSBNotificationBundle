@@ -40,7 +40,7 @@ class Notification implements NotificationInterface
     ];
 
     /**
-     * Strategie generowania powiadomień
+     * Strategies for generating notifications
      *
      * @var array
      */
@@ -49,7 +49,7 @@ class Notification implements NotificationInterface
     ];
 
     /**
-     * Typ powiadomienia
+     * Notification type
      *
      * @var array
      */
@@ -59,7 +59,7 @@ class Notification implements NotificationInterface
     ];
 
     /**
-     * Nazwa kanału wysyłki
+     * Channel name
      *
      * @var string
      * @ORM\Column(type="string", length=255)
@@ -68,31 +68,31 @@ class Notification implements NotificationInterface
     protected string $channelName;
 
     /**
-     * Lista odbiorców
+     * The list of recipients
      *
      * @var array
-     * @ORM\Column(type="array")
+     * @ORM\Column(type="json")
      */
     protected array $recipients = [];
 
     /**
-     * Zrealizowani odbiorcy
+     * Realized recipients
      *
      * @var array
-     * @ORM\Column(type="array")
+     * @ORM\Column(type="json")
      */
     protected array $completedRecipients = [];
 
     /**
-     * Odbiorcy DW
+     * CC
      *
      * @var array
-     * @ORM\Column(type="array")
+     * @ORM\Column(type="json")
      */
     protected array $cc = [];
 
     /**
-     * Strategia wysyłki
+     * Shipping strategy
      *
      * @var integer
      * @ORM\Column(type="integer")
@@ -100,7 +100,7 @@ class Notification implements NotificationInterface
     protected int $strategy;
 
     /**
-     * Status wysyłki
+     * Shipment status
      *
      * @var integer
      * @ORM\Column(type="integer")
@@ -108,7 +108,7 @@ class Notification implements NotificationInterface
     protected int $status;
 
     /**
-     * Temat powiadomienia
+     * The subject of the notification
      *
      * @var string|null
      * @ORM\Column(type="string", nullable=true)
@@ -122,8 +122,6 @@ class Notification implements NotificationInterface
     protected ?string $template;
 
     /**
-     * Dane do obsługi templatki
-     *
      * @var array
      * @ORM\Column(type="json")
      */
@@ -136,7 +134,7 @@ class Notification implements NotificationInterface
     protected ?string $content;
 
     /**
-     * Log błędów generowania powiadomienia
+     * Notification generation error log
      *
      * @var array
      * @ORM\Column(type="json", nullable=true)
@@ -144,7 +142,7 @@ class Notification implements NotificationInterface
     protected array $errorLog = [];
 
     /**
-     * Log wysyłki
+     * Shipping log
      *
      * @var array
      * @ORM\Column(type="json")
@@ -152,7 +150,7 @@ class Notification implements NotificationInterface
     protected array $sendLog = [];
 
     /**
-     * Data ukończenia powiadomienia
+     * The date the notification was completed
      *
      * @var DateTime|null
      * @ORM\Column(type="datetime", nullable=true)
@@ -160,7 +158,7 @@ class Notification implements NotificationInterface
     protected ?DateTime $completedAt;
 
     /**
-     * Liczba odbiorców na cykl
+     * Number of recipients per cycle
      *
      * @var integer
      * @ORM\Column(type="integer")
@@ -168,7 +166,7 @@ class Notification implements NotificationInterface
     protected int $maxRecipientsPerCycle = 1;
 
     /**
-     * Całkowita liczba odbiorców
+     * Total number of recipients
      *
      * @var integer
      * @ORM\Column(type="integer")
@@ -176,7 +174,7 @@ class Notification implements NotificationInterface
     protected int $recipientsTotal = 0;
 
     /**
-     * Liczba pozostałych odbiorców
+     * Number of Remaining Recipients
      *
      * @var integer
      * @ORM\Column(type="integer")
@@ -184,7 +182,7 @@ class Notification implements NotificationInterface
     protected int $recipientsCount = 0;
 
     /**
-     * Licza ukończonych odbiorców
+     * Number of recipients completed
      *
      * @var integer
      * @ORM\Column(type="integer")
@@ -192,7 +190,7 @@ class Notification implements NotificationInterface
     protected int $completedRecipientsCount = 0;
 
     /**
-     * Domena powiadomienia (dla linków)
+     * Notification domain (for links)
      *
      * @var string|null
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -200,7 +198,7 @@ class Notification implements NotificationInterface
     protected ?string $notificationDomain;
 
     /**
-     * Domena dla zasobów (zdjęcia, pliki)
+     * Domain for resources (photos, files)
      *
      * @var string|null
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -208,7 +206,7 @@ class Notification implements NotificationInterface
     protected ?string $resourceDomain;
 
     /**
-     * Załączniki
+     * Attachments
      *
      * @ORM\OneToMany(targetEntity="LSB\NotificationBundle\Entity\NotificationAttachmentInterface", mappedBy="notification", orphanRemoval=true, cascade={"persist", "remove"})
      * @ORM\JoinColumn()
@@ -216,7 +214,7 @@ class Notification implements NotificationInterface
     protected Collection $notificationAttachments;
 
     /**
-     * Flaga zachowania załączników
+     * Attachment preservation flag
      *
      * @var boolean
      * @ORM\Column(type="boolean", nullable=true, options={"default": true})
@@ -224,7 +222,7 @@ class Notification implements NotificationInterface
     protected bool $keepNotificationAttachments = true;
 
     /**
-     * Lista załączników
+     * List of attachments
      *
      * @var array
      * @ORM\Column(type="json")
@@ -232,14 +230,14 @@ class Notification implements NotificationInterface
     protected array $notificationAttachmentsList = [];
 
     /**
-     * Rozszerzeni odbiorcy powiadomienia
+     * Extended notification recipients
      *
      * @ORM\OneToMany(targetEntity="LSB\NotificationBundle\Entity\NotificationRecipientInterface", cascade={"persist", "remove"}, orphanRemoval=true, mappedBy="notification")
      */
     protected Collection $notificationExtendedRecipients;
 
     /**
-     * Typ powiadomienia (uproszczone, rozszerzone)
+     * Notification type (simplified, extended)
      *
      * @var integer
      * @ORM\Column(type="integer", options={"default" = 10})
@@ -247,14 +245,14 @@ class Notification implements NotificationInterface
     protected int $type = self::TYPE_SIMPLE;
 
     /**
-     * Przetworzona treść
+     * Processed content
      *
      * @var string|null
      */
     protected ?string $parsedContent;
 
     /**
-     * Ilośc ponowień wysyłki
+     * Number of re-shipments
      *
      * @var int
      * @ORM\Column(type="integer", options={"default" = 0})
@@ -262,7 +260,7 @@ class Notification implements NotificationInterface
     protected int $retryCount = 0;
 
     /**
-     * Konwertuj zdjęcia do załączników
+     * Convert photos to attachments
      *
      * @var boolean
      * @ORM\Column(type="boolean", nullable=false, options={"default": true})
@@ -270,7 +268,7 @@ class Notification implements NotificationInterface
     protected bool $convertImagesIntoAttachments = true;
 
     /**
-     * Adres zwrotny
+     * Return address
      *
      * @var string|null
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -279,8 +277,8 @@ class Notification implements NotificationInterface
     protected ?string $replyTo;
 
     /**
-     * RELACJE DO KLAS POWIĄZANYCH Z POWIADOMIENIAMI
-     * Relacje kontekstowe
+     * RELATIONSHIP TO CLASSES RELATED TO NOTIFICATIONS
+     * Contextual Relationships
      */
 
     /**
@@ -291,7 +289,7 @@ class Notification implements NotificationInterface
     protected $contextOrder;
 
     /**
-     * Flaga aktywacji publicznego podglądu zawartości poprzez stronę www (bez wydzielonego odbiorcy)
+     * Flag for activating public preview of content through the website (without a dedicated recipient)
      *
      * @var boolean
      * @ORM\Column(type="boolean", options={"default": false})
@@ -299,7 +297,7 @@ class Notification implements NotificationInterface
     protected bool $isPublicViewEnabled = false;
 
     /**
-     * Flaga aktywacji publicznego podglądu zawartości poprzez stronę www (dla rozszerzonych odbiorców)
+     * Web content public preview activation flag (for extended audiences)
      *
      * @var boolean
      * @ORM\Column(type="boolean", options={"default": false})
@@ -307,7 +305,7 @@ class Notification implements NotificationInterface
     protected bool $isPublicRecipientViewEnabled = false;
 
     /**
-     * Rejestr zdarzeń
+     * Event log
      *
      * @var ArrayCollection
      * @ORM\OneToMany(targetEntity="LSB\NotificationBundle\Entity\NotificationLogEntryInterface", mappedBy="notification")
@@ -315,7 +313,7 @@ class Notification implements NotificationInterface
     protected Collection $notificationLogEntries;
 
     /**
-     * Flaga aktywacji śledzenie wyświetleń
+     * Impression tracking activation flag
      *
      * @var boolean
      * @ORM\Column(type="boolean", options={"default": false})
@@ -323,7 +321,7 @@ class Notification implements NotificationInterface
     protected bool $isTrackingEnabled = false;
 
     /**
-     * Statystyki, sumaryczne otwarcia w przeglądarce
+     * Statistics, cumulative openings in the browser
      *
      * @var integer
      * @ORM\Column(type="integer", options={"default": 0})
@@ -331,7 +329,7 @@ class Notification implements NotificationInterface
     protected int $trackingOpenCount = 0;
 
     /**
-     * Statystyki, sumaryczne wyświetlenia
+     * Statistics, cumulative views
      *
      * @var integer
      * @ORM\Column(type="integer", options={"default": 0})
@@ -339,7 +337,7 @@ class Notification implements NotificationInterface
     protected int $trackingDisplayCount = 0;
 
     /**
-     * Statystyki, sumaryczne kliknięcia
+     * Statistics, cumulative clicks
      *
      * @var integer
      * @ORM\Column(type="integer", options={"default": 0})
@@ -352,6 +350,40 @@ class Notification implements NotificationInterface
     public function _toString()
     {
         return $this->subject;
+    }
+
+    /**
+     *
+     */
+    public function increaseTrackingOpenCount(): void
+    {
+        $this->trackingOpenCount++;
+    }
+
+    /**
+     *
+     */
+    public function increaseTrackingDisplayCount(): void
+    {
+        $this->trackingDisplayCount++;
+    }
+
+    /**
+     *
+     */
+    public function increaseTrackingClickCount(): void
+    {
+        $this->trackingClickCount++;
+    }
+
+    /**
+     * @return $this
+     */
+    public function clearNotificationAttachments(): self
+    {
+        $this->notificationAttachments->clear();
+
+        return $this;
     }
 
     /**
@@ -444,6 +476,16 @@ class Notification implements NotificationInterface
     }
 
     /**
+     * Get completedRecipients
+     *
+     * @return array
+     */
+    public function getCompletedRecipients()
+    {
+        return $this->completedRecipients;
+    }
+
+    /**
      * Get maxRecipientsPerCycle
      *
      * @return integer
@@ -466,7 +508,7 @@ class Notification implements NotificationInterface
         $this->generateUuid();
         $this->notificationAttachments = new ArrayCollection();
         $this->notificationLogEntries = new ArrayCollection();
-        //Na wszelki wypadek ustawiam domyślny kod wersji
+        $this->notificationExtendedRecipients = new ArrayCollection();
         $this->languageCode = $languageCode;
     }
 
@@ -611,6 +653,7 @@ class Notification implements NotificationInterface
      */
     public function setRecipients(array $recipients): self
     {
+        $this->recipientsCount = count($recipients);
         $this->recipients = $recipients;
         return $this;
     }
@@ -1405,6 +1448,4 @@ class Notification implements NotificationInterface
         $this->contextOrder = $contextOrder;
         return $this;
     }
-
-
 }

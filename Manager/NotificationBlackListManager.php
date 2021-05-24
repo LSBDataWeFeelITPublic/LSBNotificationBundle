@@ -53,6 +53,7 @@ class NotificationBlackListManager extends BaseManager
 
     /**
      * @return NotificationBlackListRepositoryInterface|RepositoryInterface
+     * @throws \Exception
      */
     public function getRepository(): NotificationBlackListRepositoryInterface
     {

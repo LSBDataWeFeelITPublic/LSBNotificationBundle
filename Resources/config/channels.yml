@@ -1,0 +1,12 @@
+services:
+    LSB\NotificationBundle\Channel\SwiftMailChannel:
+        arguments:
+            - '@swiftmailer.mailer.default'
+            - '@twig'
+            - '@validator'
+            - 'noreply@lsb.com.pl'
+            - '/root/dir/'
+            - '@LSB\NotificationBundle\Manager\NotificationAttachmentManager'
+            - '@LSB\NotificationBundle\Manager\NotificationParser'
+            - '@parameter_bag'
+        tags: [ { name: notification.channel } ]

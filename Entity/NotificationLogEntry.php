@@ -20,7 +20,7 @@ class NotificationLogEntry implements NotificationLogEntryInterface
     use CreatedUpdatedTrait;
 
     /**
-     * Lista typów zdarzeń
+     * List of event types
      *
      * @var string[]
      */
@@ -31,8 +31,6 @@ class NotificationLogEntry implements NotificationLogEntryInterface
     ];
 
     /**
-     * Powiadomienie
-     *
      * @var NotificationInterface|null
      * @ORM\ManyToOne(targetEntity="LSB\NotificationBundle\Entity\NotificationInterface", inversedBy="notificationLogEntries")
      * @ORM\JoinColumn(onDelete="CASCADE")
@@ -40,8 +38,6 @@ class NotificationLogEntry implements NotificationLogEntryInterface
     protected ?NotificationInterface $notification;
 
     /**
-     * Odbiorca
-     *
      * @var NotificationRecipientInterface|null
      * @ORM\ManyToOne(targetEntity="LSB\NotificationBundle\Entity\NotificationRecipientInterface", inversedBy="notificationLogEntries")
      * @ORM\JoinColumn(onDelete="CASCADE")
@@ -49,16 +45,12 @@ class NotificationLogEntry implements NotificationLogEntryInterface
     protected ?NotificationRecipientInterface $notificationRecipient;
 
     /**
-     * ID sesji
-     *
      * @var string|null
      * @ORM\Column(type="string", length=50, nullable=true)
      */
     protected ?string $sessionId;
 
     /**
-     * Adres IP
-     *
      * @var string|null
      * @ORM\Column(type="string", length=45, nullable=true)
      */
@@ -71,8 +63,6 @@ class NotificationLogEntry implements NotificationLogEntryInterface
     protected ?UserInterface $user;
 
     /**
-     * Typ zdarzenia
-     *
      * @var int
      * @ORM\Column(type="integer")
      */
@@ -103,7 +93,7 @@ class NotificationLogEntry implements NotificationLogEntryInterface
     protected ?string $xForwardedIpAddress;
 
     /**
-     * Adres URL użyty podczas przekierowania (kliknięty link)
+     * URL used during redirection (link clicked)
      *
      * @var string|null
      * @ORM\Column(type="string", length=2084, nullable=true)
@@ -111,7 +101,6 @@ class NotificationLogEntry implements NotificationLogEntryInterface
     protected ?string $clickedUrl;
 
     /**
-     * NotificationLogEntry constructor.
      * @param int $type
      * @throws \Exception
      */

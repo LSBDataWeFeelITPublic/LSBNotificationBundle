@@ -4,9 +4,11 @@ declare(strict_types=1);
 namespace LSB\NotificationBundle\Event;
 
 use LSB\NotificationBundle\Entity\Notification;
+use LSB\NotificationBundle\Entity\NotificationInterface;
 use LSB\NotificationBundle\Entity\NotificationRecipient;
-use Symfony\Component\EventDispatcher\Event;
+use LSB\NotificationBundle\Entity\NotificationRecipientInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Contracts\EventDispatcher\Event;
 
 /**
  * Class NotificationLogEvent
@@ -17,14 +19,14 @@ class NotificationLogEvent extends Event
     /**
      * @var Request
      */
-    protected $request;
+    protected Request $request;
 
     /**
      * Powiadomienie
      *
-     * @var Notification
+     * @var NotificationInterface
      */
-    protected $notification;
+    protected NotificationInterface $notification;
 
     /**
      * Odbiorca
@@ -36,13 +38,13 @@ class NotificationLogEvent extends Event
     /**
      * NotificationLogEvent constructor.
      * @param Request $request
-     * @param Notification $notification
-     * @param NotificationRecipient|null $notificationRecipient
+     * @param NotificationInterface $notification
+     * @param NotificationRecipientInterface|null $notificationRecipient
      */
     public function __construct(
         Request $request,
-        Notification $notification,
-        ?NotificationRecipient $notificationRecipient = null
+        NotificationInterface $notification,
+        ?NotificationRecipientInterface $notificationRecipient = null
     ) {
         $this->request = $request;
         $this->notification = $notification;
@@ -58,17 +60,17 @@ class NotificationLogEvent extends Event
     }
 
     /**
-     * @return Notification
+     * @return NotificationInterface
      */
-    public function getNotification(): Notification
+    public function getNotification(): NotificationInterface
     {
         return $this->notification;
     }
 
     /**
-     * @return NotificationRecipient|null
+     * @return NotificationRecipientInterface|null
      */
-    public function getNotificationRecipient(): ?NotificationRecipient
+    public function getNotificationRecipient(): ?NotificationRecipientInterface
     {
         return $this->notificationRecipient;
     }

@@ -23,9 +23,8 @@ services:
         alias: LSB\NotificationBundle\Factory\NotificationRecipientFactory
     LSB\NotificationBundle\Factory\NotificationRecipientFactoryInterface: '@LSB\NotificationBundle\Factory\NotificationRecipientFactory'
 
-    LSB\NotificationBundle\Factory\NotificationFactory:
-        arguments:
-            - '%lsb_notification.config.resources.notification.class.entity%'
+    LSB\NotificationBundle\Factory\NotificationFactory: ~
+
     lsb_notification_factory_notification:
         alias: LSB\NotificationBundle\Factory\NotificationFactory
     LSB\NotificationBundle\Factory\NotificationFactoryInterface: '@LSB\NotificationBundle\Factory\NotificationFactory'

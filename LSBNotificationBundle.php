@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace LSB\NotificationBundle;
 
+use LSB\NotificationBundle\DependencyInjection\Compiler\AddChannelModulePass;
 use LSB\NotificationBundle\DependencyInjection\Compiler\AddManagerResourcePass;
 use LSB\NotificationBundle\DependencyInjection\Compiler\AddResolveEntitiesPass;
 use Symfony\Component\DependencyInjection\Compiler\PassConfig;
@@ -20,6 +21,7 @@ class LSBNotificationBundle extends Bundle
         parent::build($builder);
 
         $builder
+            ->addCompilerPass(new AddChannelModulePass())
             ->addCompilerPass(new AddManagerResourcePass())
             ->addCompilerPass(new AddResolveEntitiesPass(), PassConfig::TYPE_BEFORE_OPTIMIZATION, 1);
         ;

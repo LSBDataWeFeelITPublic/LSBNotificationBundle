@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 trait NotificationTrackingStatusTrait
 {
     /**
-     * Kliknięto w linki udostępnione w ramach powiadomienia
+     * The links provided as part of the notification were clicked
      *
      * @var bool
      * @ORM\Column(type="boolean", options={"default": false})
@@ -21,7 +21,7 @@ trait NotificationTrackingStatusTrait
     protected bool $isNotificationClicked = false;
 
     /**
-     * Data kliknięcia w powiadomienie
+     * Date when the notification was clicked
      *
      * @var DateTime|null
      * @ORM\Column(type="datetime", nullable=true)
@@ -29,7 +29,7 @@ trait NotificationTrackingStatusTrait
     protected ?DateTime $notificationClickedAt;
 
     /**
-     * Powiadomienie zostało wyświetlone (bez kliknięcia w link otwórz)
+     * The notification has been displayed (without clicking the open link)
      *
      * @var bool
      * @ORM\Column(type="boolean", options={"default": false})
@@ -37,7 +37,7 @@ trait NotificationTrackingStatusTrait
     protected bool $isNotificationDisplayed = false;
 
     /**
-     * Data pierwszego wyświetlenia
+     * First view date
      *
      * @var DateTime|null
      * @ORM\Column(type="datetime", nullable=true)
@@ -45,7 +45,7 @@ trait NotificationTrackingStatusTrait
     protected ?DateTime $notificationDisplayedAt;
 
     /**
-     * Czy powiadomienie zostało otwarte (podgląd w przeglądarce)
+     * Whether the notification has been opened (preview in the browser)
      *
      * @var bool
      * @ORM\Column(type="boolean", options={"default": false})
@@ -53,7 +53,7 @@ trait NotificationTrackingStatusTrait
     protected bool $isNotificationOpened = false;
 
     /**
-     * Data otwarcia w przeglądarce
+     * Date opened in the browser
      *
      * @var DateTime|null
      * @ORM\Column(type="datetime", nullable=true)

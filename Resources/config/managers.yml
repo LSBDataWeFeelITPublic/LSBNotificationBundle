@@ -2,15 +2,19 @@ services:
 
     LSB\NotificationBundle\Manager\NotificationAttachmentManager:
         arguments:
-            - '@lsb_utility_object_manager'
+            "$objectManager": '@lsb_utility_object_manager'
+            "$kernel": '@kernel'
+            "$storage": '@vich_uploader.storage.file_system'
 
     LSB\NotificationBundle\Manager\NotificationBlackListManager:
         arguments:
-            - '@lsb_utility_object_manager'
+            "$objectManager": '@lsb_utility_object_manager'
 
     LSB\NotificationBundle\Manager\NotificationLogEntryManager:
         arguments:
-            - '@lsb_utility_object_manager'
+            "$objectManager": '@lsb_utility_object_manager'
+            "$notificationManager": '@LSB\NotificationBundle\Manager\NotificationManager'
+            "$parameterBag": '@parameter_bag'
 
     LSB\NotificationBundle\Manager\NotificationRecipientManager:
         arguments:
@@ -18,4 +22,21 @@ services:
 
     LSB\NotificationBundle\Manager\NotificationManager:
         arguments:
-            - '@lsb_utility_object_manager'
+            "$objectManager": '@lsb_utility_object_manager'
+            "$kernel": '@kernel'
+            "$translator": '@translator'
+            "$requestStack": '@request_stack'
+            "$notificationAttachmentManager": '@LSB\NotificationBundle\Manager\NotificationAttachmentManager'
+            "$parameterBag": '@parameter_bag'
+            '$eventDispatcher': '@event_dispatcher'
+            '$languageManager': '@LSB\LocaleBundle\Manager\LanguageManager'
+            '$notificationRecipientManager': '@LSB\NotificationBundle\Manager\NotificationRecipientManager'
+            '$channelModuleInventory': '@LSB\NotificationBundle\Manager\ChannelModuleInventory'
+
+
+    LSB\NotificationBundle\Manager\NotificationParser:
+        arguments:
+            - '@parameter_bag'
+            - '@twig'
+
+    LSB\NotificationBundle\Manager\ChannelModuleInventory: ~

@@ -13,7 +13,7 @@ use LSB\UtilityBundle\Repository\PaginationRepositoryTrait;
  * Class NotificationAttachmentRepository
  * @package LSB\NotificationBundle\Repository
  */
-class NotificationAttachmentRepository extends BaseRepository implements NotificationAttachmentRepositoryInterface, PaginationInterface
+class NotificationAttachmentRepository extends BaseRepository implements NotificationAttachmentRepositoryInterface
 {
     use PaginationRepositoryTrait;
 
