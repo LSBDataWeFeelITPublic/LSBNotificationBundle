@@ -98,6 +98,14 @@ class SwiftMailChannel implements ChannelInterface
     }
 
     /**
+     * @return string
+     */
+    public function getAdditionalName(): string
+    {
+        return self::ADDITIONAL_NAME_DEFAULT;
+    }
+
+    /**
      * @return int
      */
     public function getMaxRecipients(): int
