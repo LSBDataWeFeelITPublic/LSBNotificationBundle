@@ -199,9 +199,6 @@ interface NotificationInterface extends UuidInterface
      */
     public function getPercentageProgress(): float;
 
-    /**
-     * @ORM\PrePersist()
-     */
     public function updateTotalRecipients(): void;
 
     /**
@@ -432,7 +429,6 @@ interface NotificationInterface extends UuidInterface
     public function removeNotificationLogEntry($notificationLogEntry);
 
     /**
-     * @ORM\PostPersist()
      * Na razie nie przewidujemy możliwości ingerencji w listę załączników po utworzeniu powiadomienia
      */
     public function updateAttachmentsList(): void;
